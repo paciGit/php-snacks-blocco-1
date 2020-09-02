@@ -69,3 +69,24 @@ Stampiamo a schermo tutte le partite con questo schema. </h3>
   }
 
   ?>
+
+
+
+<h3> Creare un array con 15 numeri casuali, tenendo conto che l'array non dovrà contenere lo stesso numero più di una volta </h3>
+
+<?php
+  $numeri = arrayCasual(1, 100, 15);
+  print_r($numeri);
+
+  //funzione che crea un array di numeri:
+  function arrayCasual($min, $max, $lengthArr) { //funzione per dare i valori all'array
+    $array = [];
+    while (count($array) < $lengthArr) { //ciclo while che si ferma alla lunghezza data prima (15)
+      $number = rand($min, $max);
+      if (!in_array($number, $array)) { //se incontra un numero diverso da quello già inserito
+        $array[] = $number; //viene inserito nell'array
+      }
+    }
+    return $array; //array completo(15)
+  }
+?>
