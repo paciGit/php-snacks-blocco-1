@@ -41,3 +41,31 @@ Stampiamo a schermo tutte le partite con questo schema. </h3>
                       <?php echo $matches[$i]['point_Away']?>
       </li>
   <?php } ?>
+
+  <h3> Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato" </h3>
+
+  <?php
+
+  $nome = $_GET['name'];
+  $name = strlen($nome);
+  // email
+  $mail = $_GET['mail'];
+  $chiocciola = strpos($mail, '@');
+  $punto = strpos($mail, '.');
+  if ($chiocciola !== false && $punto !== false) {
+    $email = 'correct'; //email corretta
+  } else {
+    $email = 'wrong'; //email sbagliata
+  }
+  // verificà età
+  $età =$_GET['age'];
+  $age = intval($età);
+
+  //condizioni di verifica per accedere
+  if ($name > 3 && $email == 'correct' && $age > 1) {
+    echo 'Accesso riuscito';
+  } else {
+    echo 'Accesso negato';
+  }
+
+  ?>
